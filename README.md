@@ -18,26 +18,62 @@ Para rodar este projeto, você precisa de:
 
 - **Python 3.8** ou superior
 - **Pip** para instalação de dependências
+- **Make** para simplificar os comandos (pré-instalado no Linux e macOS; em Windows, pode ser instalado através do [GnuWin](http://gnuwin32.sourceforge.net/packages/make.htm) ou [Cygwin](https://www.cygwin.com/))
 
 ## 🛠 Instalação
 
+Para configurar o ambiente e instalar as dependências necessárias, siga os passos abaixo:
+
 1. **Clone o Repositório**
+
+   Abra o terminal e execute:
+
    ```bash
    git clone https://github.com/seu-usuario/ia_do_empreendedor.git
    cd ia_do_empreendedor
    ```
 
-2. **Instale as Dependências**
+2. **Instale as Dependências e Crie o Ambiente Virtual**
+
+   Use o `Makefile` para configurar o ambiente automaticamente:
+
    ```bash
-   pip install -r requirements.txt
+   make install
    ```
 
-3. **Rode a Aplicação**
+   Esse comando irá criar um ambiente virtual na pasta `venv` e instalar todas as dependências listadas em `requirements.txt`.
+
+3. **Instalar os Hooks do `pre-commit` (Opcional)**
+
+   Caso você queira utilizar os hooks de commit (se configurados), instale-os com o comando:
+
    ```bash
-   streamlit run main.py
+   venv/bin/pre-commit install
    ```
 
-## 🏗 Estrutura do Projeto
+## Execução da Aplicação
+
+Após a instalação, você pode iniciar a aplicação com o seguinte comando:
+
+```bash
+make run
+```
+
+A aplicação estará disponível no seu navegador em `http://localhost:8501`.
+
+## Executando Testes
+
+Para rodar os testes, utilize o comando:
+
+```bash
+make test
+```
+
+Esse comando executará todos os testes localizados na pasta `tests/` usando o `pytest`.
+
+## Estrutura do Projeto
+
+A estrutura do projeto é organizada da seguinte forma:
 
 ```plaintext
 ia_do_empreendedor/
@@ -69,6 +105,34 @@ ia_do_empreendedor/
 
 - **Camada de Interface** (`interface/`): Gerencia a interação com o usuário, apresentando o formulário e exibindo os resultados dos relatórios.
   - `streamlit_ui.py`: Controla a interface gráfica com Streamlit, exibindo o formulário e os relatórios finais.
+
+## Utilizando o Makefile
+
+O `Makefile` simplifica o uso dos comandos. Aqui estão os principais comandos disponíveis:
+
+- **Instalar Dependências**:
+
+  ```bash
+  make install
+  ```
+
+- **Executar a Aplicação**:
+
+  ```bash
+  make run
+  ```
+
+- **Executar os Testes**:
+
+  ```bash
+  make test
+  ```
+
+- **Remover o Ambiente Virtual**:
+
+  ```bash
+  make clean
+  ```
 
 ## 🔄 Fluxo de Execução
 
